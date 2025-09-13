@@ -8,7 +8,7 @@ class UserMenu {
   UserMenu(this._userConsoleService);
   void showMenu() {
     while (true) {
-      print("\n  ===== USER MANAGEMENT SYSTEM  =====");
+      print("\n===== USER MANAGEMENT SYSTEM =====");
       print("1.List All Users");
       print("2.View User Details");
       print("3.Create New User");
@@ -20,30 +20,19 @@ class UserMenu {
       final choice = stdin.readLineSync();
       switch (choice) {
         case '1':
-          print("***********************************\n");
           _userConsoleService.displayAllUsers();
-          print("***********************************");
           break;
         case '2':
-          print("***********************************\n");
           _viewUserMenu();
-          print("***********************************");
           break;
         case '3':
-          print("***********************************\n");
           _createUserMenu();
-          print("***********************************");
-
           break;
         case '4':
-          print("***********************************\n");
           _updateUserMenu();
           break;
         case '5':
-          print("***********************************\n");
           _deleteUserMenu();
-          print("***********************************");
-
           break;
         case '6':
           return;
@@ -54,6 +43,7 @@ class UserMenu {
   }
 
   void _viewUserMenu() {
+    print("\n===== USER DETAILS =====");
     print("Enter User ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {
@@ -62,6 +52,7 @@ class UserMenu {
   }
 
   void _createUserMenu() {
+    print("\n===== CREATE USER =====");
     print("Enter User Name:");
     final name = stdin.readLineSync();
     print("Enter User Email:");
@@ -81,6 +72,8 @@ class UserMenu {
   }
 
   void _updateUserMenu() {
+    print("\n===== UPDATE USER =====");
+
     print("Enter User ID:");
     final id = stdin.readLineSync();
     print("Enter new User Name:");
@@ -104,6 +97,8 @@ class UserMenu {
   }
 
   void _deleteUserMenu() {
+    print("\n===== DELETE USER =====");
+
     print("Enter User ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {

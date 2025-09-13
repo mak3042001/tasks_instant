@@ -47,8 +47,6 @@ class ProductConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       product,
     ) {
-      print("\n=====PRODUCT Details====");
-
       print("ID: ${product.id}");
       print("Name: ${product.name}");
       print("Price: \$${product.price.toStringAsFixed(2)}");
@@ -69,7 +67,7 @@ class ProductConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       newProduct,
     ) {
-      print("Product is created successfully with details :");
+      print("\nProduct is created successfully with details :\n");
 
       print("ID: ${newProduct.id}");
       print("Name: ${newProduct.name}");
@@ -90,7 +88,7 @@ class ProductConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       newProduct,
     ) {
-      print("Product is updated successfully with details :");
+      print("\nProduct is updated successfully with details :\n");
 
       print("ID: ${newProduct.id}");
       print("Name: ${newProduct.name}");

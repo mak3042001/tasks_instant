@@ -8,7 +8,7 @@ class PostMenu {
   PostMenu(this._postConsoleService);
   void showMenu() {
     while (true) {
-      print("\n  ===== POST MANAGEMENT SYSTEM =====");
+      print("\n===== POST MANAGEMENT SYSTEM =====");
       print("1.List All Posts");
       print("2.View Post Details");
       print("3.Create New Post");
@@ -43,6 +43,8 @@ class PostMenu {
   }
 
   void _viewPostMenu() {
+    print("\n===== POST DETAILS =====");
+
     print("Enter Post ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {
@@ -51,6 +53,7 @@ class PostMenu {
   }
 
   void _createPostMenu() {
+    print("\n===== CREATE POST =====");
     print("Enter Post Title:");
     final title = stdin.readLineSync();
     print("Enter Post Text:");
@@ -75,6 +78,8 @@ class PostMenu {
   }
 
   void _updatePostMenu() {
+    print("\n===== UPDATE POST =====");
+
     print("Enter Post ID:");
     final id = stdin.readLineSync();
     print("Enter new Post Title:");
@@ -103,6 +108,8 @@ class PostMenu {
   }
 
   void _deletePostMenu() {
+    print("\n===== DELETE POST =====");
+
     print("Enter Post ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {

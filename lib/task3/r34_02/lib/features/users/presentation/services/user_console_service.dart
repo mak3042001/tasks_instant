@@ -29,7 +29,7 @@ class UserConsoleService with MapFailurMessages {
       if (users.isEmpty) {
         print("No users found.");
       } else {
-        print("\n=====USERS====");
+        print("\n===== USERS ====");
         for (final user in users) {
           print("ID: ${user.id}");
           print("Name: ${user.name}");
@@ -47,7 +47,6 @@ class UserConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       user,
     ) {
-      print("\n=====USER Details====");
       print("ID: ${user.id}");
       print("Name: ${user.name}");
       print("Email: ${user.email}");
@@ -63,7 +62,7 @@ class UserConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       newUser,
     ) {
-      print("User is created successfully with details :");
+      print("\nUser is created successfully with details :\n");
       print("ID: ${newUser.id}");
       print("Name: ${newUser.name}");
       print("Email: ${newUser.email}");
@@ -88,7 +87,7 @@ class UserConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       updatedUser,
     ) {
-      print("User is updated successfully with details :");
+      print("\nUser is updated successfully with details :\n");
       print("ID: ${updatedUser.id}");
       print("Name: ${updatedUser.name}");
       print("Email: ${updatedUser.email}");

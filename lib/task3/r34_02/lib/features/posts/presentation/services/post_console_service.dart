@@ -29,7 +29,7 @@ class PostConsoleService with MapFailurMessages {
       if (posts.isEmpty) {
         print("No Posts till now");
       } else {
-        print("\n=====POSTS====");
+        print("\n===== POSTS ====");
         for (final post in posts) {
           print("ID: ${post.id}");
           print("Title: ${post.title}");
@@ -47,8 +47,6 @@ class PostConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       post,
     ) {
-      print("\n=====POST Details====");
-
       print("ID: ${post.id}");
       print("Title: ${post.title}");
       print("Text: ${post.text}");
@@ -64,7 +62,7 @@ class PostConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       newPost,
     ) {
-      print("Post is created successfully with details :");
+      print("\nPost is created successfully with details :\n");
 
       print("ID: ${newPost.id}");
       print("Title: ${newPost.title}");
@@ -90,7 +88,7 @@ class PostConsoleService with MapFailurMessages {
     result.fold((failure) => print("Error is ${mapFailurToMssage(failure)}"), (
       newPost,
     ) {
-      print("Post is updated successfully with details :");
+      print("\nPost is updated successfully with details :\n");
 
       print("ID: ${newPost.id}");
       print("Title: ${newPost.title}");

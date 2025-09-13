@@ -8,7 +8,7 @@ class ProductMenu {
   ProductMenu(this._productConsoleService);
   void showMenu() {
     while (true) {
-      print("\n  ===== PRODUCT MANAGEMENT SYSTEM =====");
+      print("\n===== PRODUCT MANAGEMENT SYSTEM =====");
       print("1.List All Products");
       print("2.View Product Details");
       print("3.Create New Product");
@@ -40,6 +40,7 @@ class ProductMenu {
 
   void _viewProductMenu() {
     //_viewProduct is private now
+    print("\n===== PRODUCT DETAILS =====");
     print("Enter Product ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {
@@ -48,6 +49,8 @@ class ProductMenu {
   }
 
   void _createProductMenu() {
+    print("\n===== CREATE PRODUCT =====");
+
     print("Enter Product Name:");
     final name = stdin.readLineSync();
     print("Enter Product Description:");
@@ -72,6 +75,7 @@ class ProductMenu {
   }
 
   void _updateProductMenu() {
+    print("\n===== UPDATE PRODUCT =====");
     print("Enter Product ID:");
     final id = stdin.readLineSync();
     print("Enter Product Name:");
@@ -101,6 +105,8 @@ class ProductMenu {
 
   void _deleteProductMenu() {
     //_viewProduct is private now
+    print("\n===== UPDATE PRODUCT =====");
+
     print("Enter Product ID:");
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {

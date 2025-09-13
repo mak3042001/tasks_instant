@@ -9,7 +9,6 @@ import 'injection_container.dart' as my_container;
 
 void main() {
   //initialize dependency injection
-  print("Waiting for Initializing App ...");
   my_container.init();
 
   //Start Menus
