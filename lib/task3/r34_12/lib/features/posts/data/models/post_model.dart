@@ -4,7 +4,7 @@ class PostModel extends Post {
   const PostModel({
     required super.id,
     required super.title,
-    required super.description,
+    required super.description, 
   });
 
   // from json to object
@@ -12,7 +12,7 @@ class PostModel extends Post {
     return PostModel(
       id: json['id'], 
       title: json['title'],
-      description: json['description'],
+      description: json['description'], 
     );
   }
 
@@ -33,7 +33,7 @@ class PostModel extends Post {
     return PostModel(
       id: id ?? this.id,
       title: title ?? this.title,
-      description: description ?? this.description,
+      description: description ?? this.description, 
     );
   }
 }
@@ -41,7 +41,7 @@ class PostModel extends Post {
  PostModel postModel = const PostModel(
   id: '1', 
   title: 'Title 1',
-  description: 'Description 1',
+  description: 'Description 1', 
 );
 
 void main() {

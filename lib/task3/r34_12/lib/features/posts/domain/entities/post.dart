@@ -9,7 +9,7 @@ class Post extends Equatable {
  const Post({
     required this.id,
     required this.title,
-    required this.description,
+    required this.description, 
     
   });
 

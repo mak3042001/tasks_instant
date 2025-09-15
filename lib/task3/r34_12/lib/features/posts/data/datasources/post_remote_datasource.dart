@@ -9,8 +9,8 @@ abstract class PostRemoteDataSource {
 
 class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   final List<PostModel> _posts = [
-    const PostModel(id: '1', title: 'Post 1', description: 'Description 1'),
-    const PostModel(id: '2', title: 'Post 2', description: 'Description 2'),
+    const PostModel(id: '1', title: 'Post 1', description: 'Description 1', content: ''),
+    const PostModel(id: '2', title: 'Post 2', description: 'Description 2', content: ''),
   ];
 
   @override
