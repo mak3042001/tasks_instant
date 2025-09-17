@@ -1,7 +1,10 @@
+// lib/features/posts/data/datasources/post_remote_datasource.dart
 import 'package:r34_12/core/error/exceptions.dart';
-import '../models/post_model.dart';
+import 'package:r34_12/features/posts/data/models/post_model.dart';
 
 abstract class PostRemoteDataSource {
+  List<PostModel> getAllPosts();
+  PostModel getPost(String id);
   PostModel createPost(PostModel post);
   PostModel updatePost(PostModel post);
   bool deletePost(String id);
@@ -9,9 +12,23 @@ abstract class PostRemoteDataSource {
 
 class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   final List<PostModel> _posts = [
-    const PostModel(id: '1', title: 'Post 1', description: 'Description 1', content: ''),
-    const PostModel(id: '2', title: 'Post 2', description: 'Description 2', content: ''),
+    const PostModel(id: '1', title: 'First Post', content: 'This is the content of the first post.'),
+    const PostModel(id: '2', title: 'Second Post', content: 'This is the content of the second post.'),
   ];
+
+  @override
+  List<PostModel> getAllPosts() {
+    return List.unmodifiable(_posts); // حماية للـ list
+  }
+
+  @override
+  PostModel getPost(String id) {
+    try {
+      return _posts.firstWhere((post) => post.id == id);
+    } catch (_) {
+      throw ServerException();
+    }
+  }
 
   @override
   PostModel createPost(PostModel post) {

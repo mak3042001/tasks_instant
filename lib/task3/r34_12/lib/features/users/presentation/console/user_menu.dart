@@ -7,45 +7,70 @@ class UserMenu {
   UserMenu(this._userService);
 
   void showMenu() {
-    while (true) {
-      print('\n=== USER MANAGEMENT SYSTEM ===');
-      print('1. Add new user');
-      print('2. Update user');
-      print('3. Delete user');
-      print('4. Exit');
-      print('Enter your choice (1-4): ');
+    subLoop: while (true) {
+      print("\n== User MANAGEMENT SYSTEM ==");
+      print('1. List all users');
+      print('2. View user details');
+      print('3. Create new user');
+      print('4. Update user');
+      print('5. Delete user');
+      print('6. Back to main menu');
+      print('Enter your choice (1-6): ');
 
       final choice = stdin.readLineSync();
 
       switch (choice) {
         case '1':
-          _addUser();
+          _userService.displayAllUsers();
           break;
         case '2':
-          _updateUser();
+          _viewUser();
           break;
         case '3':
-          _deleteUser();
+          _createUser();
           break;
         case '4':
-          print('Goodbye!');
-          exit(0);
+          _updateUser();
+          break;
+        case '5':
+          _deleteUser();
+          break;
+        case '6':
+          print('Returning to main menu...');
+          break subLoop;
         default:
           print('Invalid choice. Please try again.');
       }
     }
   }
 
-  void _addUser() {
+  void _viewUser() {
     print('Enter user ID: ');
     final id = stdin.readLineSync();
-
     if (id != null && id.isNotEmpty) {
-      _userService.addUser(id);
+      _userService.displayUser(id);
     } else {
-      print('User ID is required.');
+      print('user ID is required.');
     }
   }
+
+  void _createUser() {
+    print('Enter user name: ');
+    final name = stdin.readLineSync();
+    print('Enter user email: ');
+    final email = stdin.readLineSync();
+
+
+    if (name != null && name.isNotEmpty &&
+        email != null && email.isNotEmpty 
+        ) {
+      print('user creation');
+    } else {
+      print('All fields are required.');
+    }
+  }
+   
+  
 
   void _updateUser() {
     print('Enter user ID to update: ');
@@ -54,11 +79,13 @@ class UserMenu {
     final name = stdin.readLineSync();
     print('Enter new user email: ');
     final email = stdin.readLineSync();
+    
 
     if (id != null && id.isNotEmpty &&
         name != null && name.isNotEmpty &&
-        email != null && email.isNotEmpty) {
-      _userService.updateUser(id, name, email);
+        email != null && email.isNotEmpty 
+        ) {
+      print('user updated');
     } else {
       print('All fields are required.');
     }
@@ -70,7 +97,7 @@ class UserMenu {
     if (id != null && id.isNotEmpty) {
       _userService.deleteUser(id);
     } else {
-      print('User ID is required.');
+      print('Product ID is required.');
     }
   }
 }

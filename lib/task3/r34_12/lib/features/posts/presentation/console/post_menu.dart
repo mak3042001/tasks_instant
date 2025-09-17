@@ -7,73 +7,91 @@ class PostMenu {
   PostMenu(this._postService);
 
   void showMenu() {
-    while (true) {
-      print('\n=== POST MANAGEMENT SYSTEM ===');
-      print('1. Create new post');
-      print('2. Update post');
-      print('3. Delete post');
-      print('4. Exit');
-      print('Enter your choice (1-4): ');
+    subLoop: while (true) {
+      print("\n== Post MANAGEMENT SYSTEM ==");
+      print('1. List all posts');
+      print('2. View post details');
+      print('3. Create new post');
+      print('4. Update post');
+      print('5. Delete post');
+      print('6. Back to main menu');
+      stdout.write('Enter your choice (1-6): ');
 
       final choice = stdin.readLineSync();
 
       switch (choice) {
         case '1':
-          _createPost();
+          _postService.displayAllPosts();
           break;
         case '2':
-          _updatePost();
+          _viewPost();
           break;
         case '3':
-          _deletePost();
+          _createPost();
           break;
         case '4':
-          print('Goodbye!');
-          exit(0);
+          _updatePost();
+          break;
+        case '5':
+          _deletePost();
+          break;
+        case '6':
+          print('Returning to main menu...');
+          break subLoop;
         default:
           print('Invalid choice. Please try again.');
       }
     }
   }
 
+  void _viewPost() {
+    stdout.write('Enter post ID: ');
+    final id = stdin.readLineSync();
+    if (id != null && id.isNotEmpty) {
+      _postService.displayPost(id);
+    } else {
+      print('⚠️ Post ID is required.');
+    }
+  }
+
   void _createPost() {
-    print('Enter post title: ');
+    stdout.write('Enter post title: ');
     final title = stdin.readLineSync();
-    print('Enter post description: ');
-    final description = stdin.readLineSync();
+    stdout.write('Enter post content: ');
+    final content = stdin.readLineSync();
 
     if (title != null && title.isNotEmpty &&
-        description != null && description.isNotEmpty) {
-      _postService.createPost(title, description);
+        content != null && content.isNotEmpty) {
+      _postService.createPost(title, content);
     } else {
-      print('All fields are required.');
+      print('⚠️ All fields are required.');
     }
   }
 
   void _updatePost() {
-    print('Enter post ID to update: ');
+    stdout.write('Enter post ID to update: ');
     final id = stdin.readLineSync();
-    print('Enter new post title: ');
+    stdout.write('Enter new post title: ');
     final title = stdin.readLineSync();
-    print('Enter new post description: ');
-    final description = stdin.readLineSync();
+    stdout.write('Enter new post content: ');
+    final content = stdin.readLineSync();
 
     if (id != null && id.isNotEmpty &&
         title != null && title.isNotEmpty &&
-        description != null && description.isNotEmpty) {
-      _postService.updatePost(id, title, description);
+        content != null && content.isNotEmpty) {
+      _postService.updatePost(id, title, content);
     } else {
-      print('All fields are required.');
+      print('⚠️ All fields are required.');
     }
   }
 
   void _deletePost() {
-    print('Enter post ID to delete: ');
+    stdout.write('Enter post ID to delete: ');
     final id = stdin.readLineSync();
     if (id != null && id.isNotEmpty) {
       _postService.deletePost(id);
     } else {
-      print('Post ID is required.');
+      print('⚠️ Post ID is required.');
     }
   }
 }
