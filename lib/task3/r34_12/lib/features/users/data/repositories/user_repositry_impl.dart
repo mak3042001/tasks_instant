@@ -12,10 +12,35 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Either<Failure, bool> addUser(String id) {
+  Either<Failure, List<User>> getAllUsers() {
     try {
-      final result = remoteDataSource.addUser(id as UserModel);
-      return Right(result as bool);
+      final remoteUsers = remoteDataSource.getAllUsers();
+      return Right(remoteUsers);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Either<Failure, User> getUser(String id) {
+    try {
+      final remoteUser = remoteDataSource.getUser(id);
+      return Right(remoteUser);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Either<Failure, User> createUser(User user) {
+    try {
+      final userModel = UserModel(
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      );
+      final newUser = remoteDataSource.createUser(userModel);
+      return Right(newUser);
     } on ServerException {
       return Left(ServerFailure());
     }

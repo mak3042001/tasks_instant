@@ -1,22 +1,22 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
 import 'package:r34_12/core/error/failures.dart';
 import 'package:r34_12/features/users/domain/repositories/user_repository.dart';
+import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 
-class Deleteuser {
+class DeleteUser {
   final UserRepository repository;
 
-  Deleteuser(this.repository);
+  DeleteUser(this.repository);
 
-  Either<Failure, bool> call(DeleteuserParams params) {
+  Either<Failure, bool> call(DeleteUserParams params) {
     return repository.deleteUser(params.id);
   }
 }
 
-class  DeleteuserParams extends Equatable {
+class DeleteUserParams extends Equatable {
   final String id;
 
-  const DeleteuserParams({required this.id});
+  const DeleteUserParams({required this.id});
 
   @override
   List<Object?> get props => [id];
